@@ -1,0 +1,133 @@
+Test scenario #1:
+1. Register with new user
+2. Add products to the cart such that total amount is of 1000 INR 
+3. Go to the checkout page
+4. apply promo code NEW30
+
+expected result 
+  Message should  disaplay "coupon successfully applied” 
+  Discount amount of 300 INR should be reflected to the total amount. 
+
+Test scenario #2:
+
+1. Login with  user which was already registered(even before this coupon code is created).
+2. Make sure this user havent made any purchase in past.
+3. Add products to the cart such that total amount is of 1000 INR 
+3. Go to the checkout page
+4. apply promo code NEW30  
+
+expected result 
+  Message should  disaplay "coupon successfully applied” 
+  Discount amount of 300 INR should be reflected to the total amount.
+
+Test scenario #3:
+1. Register with new user
+2. Add products to the cart such that total amount is of 2000 INR or more. 
+3. Go to the checkout page
+4. apply promo code NEW30
+
+expected result 
+  Message should  disaplay "coupon successfully applied” 
+  Discount amount of 300 INR should be reflected to the total amount.
+
+Test scenario #4:
+1. Register with new user
+2. Add products to the cart such that total amount is of 1000 INR. 
+3. Go to the checkout page
+4. apply promo code NEW30
+5. do not complete payment and return to shopping
+6. Go to the checkout page
+7. apply promo code NEW30
+
+expected result 
+  Message should  disaplay "coupon successfully applied” 
+  Discount amount of 300 INR should be reflected to the total amount.
+
+Test scenario #5:
+1. Register with new user
+2. Add products to the cart such that total amount is less than 1000 INR.
+3. Go to checkout page
+4. apply promo code NEW30
+
+expected result 
+  Message should  disaplay "coupon cannot be applied” 
+  No discount should be applied.
+
+Test scenario #6:
+1. Register with new user
+2. Add products to the cart such that total amount is less than 1000 INR.
+3. Go to checkout page
+4. complete the payment.
+5. come back to shooping
+6. Add products to the cart such that total amount is more than 1000 INR.
+7. Go to checkout page
+8. apply promo code NEW30
+
+expected result 
+  Message should  disaplay "coupon cannot be applied” 
+  No discount should be applied.
+
+
+Test scenario #7:
+1. Register with new user
+2. Add products to the cart such that total amount is more than 1000 INR.
+3. Go to checkout page
+4. Do not apply any coupon code.
+5. complete the payment.
+6. come back to shooping
+7. Add products to the cart such that total amount is more than 1000 INR.
+8. Go to checkout page
+9. apply promo code NEW30
+
+expected result 
+  Message should  disaplay "coupon cannot be applied” 
+  No discount should be applied.
+
+Test scenario #8:
+
+1. Login with existing user (use should have made some purchase before)
+2. Add products to the cart such that total amount is more than 1000 INR.
+3. Go to checkout page
+4. apply promo code NEW30
+
+expected result 
+  Message should  disaplay "coupon cannot be applied” 
+  No discount should be applied.
+
+Test scenarion #9:
+
+1. Login with existing user (use should have made some purchase before)
+2. Add products to the cart such that total amount is more than 1000 INR.
+3. Go to checkout page
+4. apply promo code NEW303030(any code having more than 7 chars)
+
+expected result 
+  Message should  disaplay "coupon cannot be applied” 
+  No discount should be applied.
+
+Test scenario #10:
+
+Assumption: Lets assume coupon code is valid till midnight.
+1. Register with new user
+2. Add products to the cart such that total amount is more than 1000 INR.
+3. Go to checkout page
+4. apply promo code NEW30 some time before code expiry time
+5. do not close the current browser tab
+6. try to make payment once the code is expired
+
+expected result 
+  Final amount should not have the code discount. 
+
+
+Test scenario #11:
+
+Assumption: I have assumed promo code will be applicable only if the actual product amount is more than or equal to 1000 INR excluding any other charges like shipping/taxes.
+
+1. Register with new user
+2. Add products to the cart such that total amount is exactly 1000 INR includning shipping charges.
+3. Go to checkout page
+4. apply promo code NEW30
+
+expected result 
+  Message should  disaplay "coupon cannot be applied” 
+  No discount should be applied.
