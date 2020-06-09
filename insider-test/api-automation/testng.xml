@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <parameter name="baseurl" value="https://apiproxy.paytm.com/"></parameter>
+
+    <test verbose="2" preserve-order="true"
+          name="movie test">
+    <classes>
+        <class name="movie.MovieTest"></class>
+    </classes>
+     </test>
+</suite>
