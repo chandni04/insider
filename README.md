@@ -18,4 +18,4 @@ How to run:
 a) IDE: import api-automation in intelliJ or eclipse and run testng.xml
 b) command line: navigate to api-automation folder and run "mvn clean install"
 
-The excel file will be generated inside api-automation diretory.
+   The excel file will be generated inside api-automation diretory.
