@@ -8,20 +8,30 @@ public class MovieTest {
     @Test
     @Parameters({"baseurl"})
     public void checkStatusCode(String baseurl) {
-        MovieDataAction movie=new MovieDataAction();
-        movie.checkStatusCode(baseurl,"v2/movies/upcoming");
+        MovieDataAction movie = new MovieDataAction();
+        movie.checkStatusCode(baseurl, "v2/movies/upcoming");
 
     }
+
     @Test
     @Parameters({"baseurl"})
     public void checkReleaseMovieDate(String baseurl) {
         MovieDataAction movie = new MovieDataAction();
-        movie.movieReleasedate(baseurl,"v2/movies/upcoming");
+        movie.movieReleasedate(baseurl, "v2/movies/upcoming");
     }
+
     @Test
     @Parameters({"baseurl"})
     public void posterURLTest(String baseurl) {
         MovieDataAction movie = new MovieDataAction();
-        movie.posterURL(baseurl,"v2/movies/upcoming");
+        movie.posterURL(baseurl, "v2/movies/upcoming");
     }
+
+    @Test
+    @Parameters({"baseurl"})
+    public void checkForUniqueMovieCodes(String baseurl) {
+        MovieDataAction movie = new MovieDataAction();
+        movie.uniqueMovieCode(baseurl, "v2/movies/upcoming");
+    }
+
 }
