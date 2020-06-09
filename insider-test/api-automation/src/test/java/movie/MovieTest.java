@@ -18,4 +18,10 @@ public class MovieTest {
         MovieDataAction movie = new MovieDataAction();
         movie.movieReleasedate(baseurl,"v2/movies/upcoming");
     }
+    @Test
+    @Parameters({"baseurl"})
+    public void posterURLTest(String baseurl) {
+        MovieDataAction movie = new MovieDataAction();
+        movie.posterURL(baseurl,"v2/movies/upcoming");
+    }
 }
