@@ -6,6 +6,7 @@ import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
+import util.ExcelUtil;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -130,6 +131,30 @@ public class MovieDataAction {
         }
         if (!movieToLanguageMap.isEmpty()) {
             Assert.fail("Found movies with multiple languages: " + movieToLanguageMap);
+        }
+    }
+
+    public void movieWithoutContent(String baseURl, String endPoint) {
+        RestAssured.baseURI = baseURl;
+        RequestSpecification httpRequest = RestAssured.given().log().all();
+        Response response = httpRequest.request(Method.GET, endPoint);
+        MovieDataWrapper movieDataWrapper = null;
+        String responseBody = response.getBody().asString();
+        try {
+            movieDataWrapper = mapper.readValue(responseBody, MovieDataWrapper.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        List<MovieData> upcomingMovieData = movieDataWrapper.getUpcomingMovieData();
+        List<String> moviesWithoutContent = new ArrayList<>();
+        for (int i = 0; i < upcomingMovieData.size(); i++) {
+            MovieData data = upcomingMovieData.get(i);
+            if (!data.isContentAvailable()) {
+                moviesWithoutContent.add(data.getMovieName());
+            }
+        }
+        if (!moviesWithoutContent.isEmpty()) {
+            ExcelUtil.writeMovieDataToExcel(moviesWithoutContent, "MoviesWithoutContent.xlsx");
         }
     }
 

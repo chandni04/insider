@@ -4,22 +4,34 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class MovieData {
 
     @JsonProperty("provider_moviename")
     private String providerMovieName;
+
     private String moviePosterUrl;
+
     private String movieTitle;
+
     @JsonProperty("movie_name")
     private String movieName;
+
     private String language;
+
     private String releaseDate;
+
     private List<String> genre;
+
     private int rank;
+
     private String paytmMovieCode;
+
+    @JsonProperty("isContentAvailable")
     private boolean isContentAvailable;
+
     private int contentId;
 
     public String getProviderMovieName() {
@@ -108,5 +120,22 @@ public class MovieData {
 
     public void setContentId(int contentId) {
         this.contentId = contentId;
+    }
+
+    @Override
+    public String toString() {
+        return "MovieData{" +
+                "providerMovieName='" + providerMovieName + '\'' +
+                ", moviePosterUrl='" + moviePosterUrl + '\'' +
+                ", movieTitle='" + movieTitle + '\'' +
+                ", movieName='" + movieName + '\'' +
+                ", language='" + language + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", genre=" + genre +
+                ", rank=" + rank +
+                ", paytmMovieCode='" + paytmMovieCode + '\'' +
+                ", isContentAvailable=" + isContentAvailable +
+                ", contentId=" + contentId +
+                '}';
     }
 }

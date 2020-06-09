@@ -41,4 +41,11 @@ public class MovieTest {
         movie.movieLanguageFormat(baseurl, "v2/movies/upcoming");
     }
 
+    @Test
+    @Parameters({"baseurl"})
+    public void captureMoviesWithoutContent(String baseurl) {
+        MovieDataAction movie = new MovieDataAction();
+        movie.movieWithoutContent(baseurl, "v2/movies/upcoming");
+    }
+
 }
