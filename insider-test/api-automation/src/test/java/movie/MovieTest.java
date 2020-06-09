@@ -34,4 +34,11 @@ public class MovieTest {
         movie.uniqueMovieCode(baseurl, "v2/movies/upcoming");
     }
 
+    @Test
+    @Parameters({"baseurl"})
+    public void checkForMovieLanguageFormat(String baseurl) {
+        MovieDataAction movie = new MovieDataAction();
+        movie.movieLanguageFormat(baseurl, "v2/movies/upcoming");
+    }
+
 }
